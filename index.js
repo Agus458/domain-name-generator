@@ -1,6 +1,7 @@
 let pronoun = ['the','our'];
 let adj = ['great', 'big' ];
-let noun = ['jogger','racoon'];
+let noun = ['jogger','racoon','holaio',"holacom"];
+let ext = ['com','us',"io"];
 
 function generateDomainNames(){
     let res = [];
@@ -11,8 +12,19 @@ function generateDomainNames(){
 
             for(let z = 0; z<noun.length; z++){
 
-                res.push(pronoun[i]+adj[x]+noun[z]);
+                for(let y = 0; y<ext.length; y++){
 
+                    if(noun[z].includes(ext[y], (noun.length-ext[y].length) ) ){
+                        
+                        let str = noun[z].slice(0,-ext[y].length);
+                        res.push(pronoun[i]+adj[x]+str+"."+ext[y]);
+
+                    } else {
+                        res.push(pronoun[i]+adj[x]+noun[z]+"."+ext[y]);
+                    }
+                    
+                }
+                
             }
 
         }
